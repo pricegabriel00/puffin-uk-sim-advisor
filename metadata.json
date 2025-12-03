@@ -1,0 +1,7 @@
+{
+  "name": "Puffin",
+  "description": "An intelligent AI assistant that analyzes your digital lifestyle to recommend the perfect mobile data plan, helping you save money and stay connected.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
