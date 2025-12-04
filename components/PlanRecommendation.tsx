@@ -719,22 +719,32 @@ const PlanRecommendation: React.FC<PlanRecommendationProps> = ({ analysis, userI
                   </div>
 
                   <div className="p-5 bg-gray-50 border-t border-gray-100 flex items-center justify-between gap-4">
-                      <div className="flex flex-col gap-1 px-2">
+                      <div className="flex flex-col gap-1 px-2 pointer-events-auto">
                           <div className="text-sm font-bold text-brand-orange hover:text-orange-700 underline decoration-brand-orange/30 underline-offset-4 cursor-pointer w-fit">
                               More details
                           </div>
                       </div>
-                      <button 
+                      <a 
+                          href={plan.planData.dealUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
                           onClick={(e) => { 
                               e.stopPropagation();
-                              onPlanClick(plan, 'listCard');
+                              console.log("[Puffin click]", {
+                                  provider: plan.provider,
+                                  price: plan.monthlyCost,
+                                  matchScore: plan.calculatedPuffinScore,
+                                  source: 'listCard',
+                                  activeTab: sortBy,
+                                  filtersSummary
+                              });
                           }}
-                          className="group py-3 px-8 bg-gray-900 hover:bg-gray-800 text-white rounded-xl font-bold text-sm transition-all duration-200 shadow-md flex items-center justify-center gap-2 transform active:scale-[0.99] hover:-translate-y-0.5"
+                          className="group py-3 px-8 bg-gray-900 hover:bg-gray-800 text-white rounded-xl font-bold text-sm transition-all duration-200 shadow-md flex items-center justify-center gap-2 transform active:scale-[0.99] hover:-translate-y-0.5 pointer-events-auto"
                           aria-label={`View this ${plan.provider} deal in a new tab`}
                       >
                           <span>View deal on {plan.provider}</span>
                           <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </button>
+                      </a>
                   </div>
                 </div>
               );
@@ -881,13 +891,26 @@ const PlanRecommendation: React.FC<PlanRecommendationProps> = ({ analysis, userI
                           </div>
                   </div>
                   <div className="p-8 border-t border-gray-100 bg-gray-50 sticky bottom-0 z-10">
-                      <button 
-                        onClick={() => onPlanClick(selectedPlan, 'modal')}
-                        className="w-full py-4 bg-brand-orange hover:bg-orange-600 text-white rounded-xl font-bold text-lg shadow-xl shadow-orange-200 transition-all flex items-center justify-center gap-3 transform active:scale-[0.98] hover:-translate-y-1"
+                      <a 
+                          href={selectedPlan.planData.dealUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          onClick={(e) => {
+                             e.stopPropagation();
+                             console.log("[Puffin click]", {
+                                provider: selectedPlan.provider,
+                                price: selectedPlan.monthlyCost,
+                                matchScore: selectedPlan.calculatedPuffinScore,
+                                source: 'modal',
+                                activeTab: sortBy,
+                                filtersSummary
+                             });
+                          }}
+                          className="w-full py-4 bg-brand-orange hover:bg-orange-600 text-white rounded-xl font-bold text-lg shadow-xl shadow-orange-200 transition-all flex items-center justify-center gap-3 transform active:scale-[0.98] hover:-translate-y-1"
                       >
                           <span>View Deal on {selectedPlan.provider}</span>
                           <ExternalLink className="w-5 h-5" />
-                      </button>
+                      </a>
                   </div>
               </div>
           </div>
