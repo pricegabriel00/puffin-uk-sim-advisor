@@ -276,7 +276,7 @@ const LifestyleInput: React.FC<LifestyleInputProps> = ({ onSubmit, isLoading }) 
           Find your perfect UK SIM in 2 minutes
         </h2>
         <p className="text-gray-500 text-lg leading-relaxed max-w-xl mx-auto font-light">
-          Tell us how you use your phone and we’ll scan the best SIM-only deals for you.
+          Smart, personalised UK SIM picks powered by Puffin.
         </p>
       </div>
 
