@@ -11,7 +11,7 @@ export interface MatchLabelResult {
 export const getMatchLabel = (score: number): MatchLabelResult => {
   if (score >= 80) {
     return { 
-      label: "Excellent Match", 
+      label: "Excellent fit", 
       level: 'excellent', 
       colorClass: "text-green-700",
       badgeClass: "bg-green-50 text-green-700 border-green-100" 
@@ -19,7 +19,7 @@ export const getMatchLabel = (score: number): MatchLabelResult => {
   }
   if (score >= 65) {
     return { 
-      label: "Good Match", 
+      label: "Good fit", 
       level: 'good', 
       colorClass: "text-blue-700", 
       badgeClass: "bg-blue-50 text-blue-700 border-blue-100" 
@@ -27,14 +27,14 @@ export const getMatchLabel = (score: number): MatchLabelResult => {
   }
   if (score >= 50) {
     return { 
-      label: "Fair Match", 
+      label: "Fair fit", 
       level: 'fair', 
       colorClass: "text-amber-700", 
       badgeClass: "bg-amber-50 text-amber-700 border-amber-100" 
     };
   }
   return { 
-    label: "Cautious Match", 
+    label: "Cautious fit", 
     level: 'cautious', 
     colorClass: "text-orange-600 font-bold", 
     badgeClass: "bg-orange-50 text-orange-700 border-orange-200 font-bold" 

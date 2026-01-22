@@ -130,9 +130,13 @@ export const computeMatchScore = (plan: Plan, userInput: UserInput): ScoreResult
   }
 
   // -- ReliabilityFit --
-  // Base map: 1->20, 2->40, 3->60, 4->80, 5->100
-  let reliabilityFit = plan.reliabilityRating * 20;
-  if (priority.includes('I want the best coverage') && plan.reliabilityRating < 4) {
+  // Use the plan's raw rating (0-100) from the sheet. Fallback to 80.
+  let reliabilityFit = plan.rawRating !== undefined && plan.rawRating !== null && plan.rawRating !== 0 
+    ? plan.rawRating 
+    : 80;
+
+  // Apply penalty if best coverage is prioritized but rating is low (<75)
+  if (priority.includes('I want the best coverage') && reliabilityFit < 75) {
       reliabilityFit -= 20;
   }
 
